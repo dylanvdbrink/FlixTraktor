@@ -1,4 +1,4 @@
-package nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.scraper;
+package nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.services;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -42,8 +42,8 @@ public class NetflixViewingActivityService {
     @Value("${netflix.profile}")
     private String netflixProfile;
 
-    @Value("${tempdir}")
-    private String tempDir;
+    @Value("${datalocation.path}")
+    private String dataLocation;
 
     @Value("${chromedriver.binary.path}")
     private String chromedriverPath;
@@ -123,8 +123,8 @@ public class NetflixViewingActivityService {
 
     /**
      * Create the Chrome webdriver
-     * @return
-     * @throws IOException
+     * @return The created Chrome WebDriver
+     * @throws IOException When there was an error while creating the webdriver
      */
     private WebDriver createChromeDriver() throws IOException {
         System.setProperty("webdriver.chrome.driver", chromedriverPath);
@@ -141,7 +141,7 @@ public class NetflixViewingActivityService {
         commandParams.put("cmd", "Page.setDownloadBehavior");
         Map<String, String> params = new HashMap<>();
         params.put("behavior", "allow");
-        params.put("downloadPath", tempDir);
+        params.put("downloadPath", dataLocation);
         commandParams.put("params", params);
         Gson gson = new Gson();
         HttpClient httpClient = HttpClientBuilder.create().build();

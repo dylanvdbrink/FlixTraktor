@@ -5,7 +5,7 @@ import lombok.extern.apachecommons.CommonsLog;
 import nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.jms.WatchedTitleProducer;
 import nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.exceptions.NetflixScrapeException;
 import nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.pojo.NetflixTitle;
-import nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.scraper.NetflixViewingActivityService;
+import nl.dylanvdbrink.flixtraktor.netflixhistorywatcher.services.NetflixViewingActivityService;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Value;
